@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {{ entry | safe }}
+
+    <br>
+
+    <form action="{% url 'encyclopedia:edit_page' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="title" value="{{ title }}">
+        <input type="submit" class="btn btn-primary" value="Edit Content">
+    </form>
+{% endblock %}
